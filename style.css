@@ -1,0 +1,303 @@
+/* ================= GLOBAL ================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================= BASE / GLOBAL ================= */
+
+html,
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    overflow: hidden;
+    height: 100%;
+    background: linear-gradient(180deg, #000000 0%, #780606 40%, #f5e39c 120%);
+}
+
+/* ================= WORLD / LAYOUT ================= */
+
+.world {
+    height: 100%;
+    display: flex;
+    touch-action: pan-x;
+    transition: transform 0.6s cubic-bezier(.22, .61, .36, 1);
+}
+
+.scene {
+    width: 100vw;
+    height: 100%;
+    position: relative;
+    display: flex;
+    container-type: inline-size;
+    align-items: center;
+    justify-content: center;
+}
+
+.ground {
+    width: 100%;
+    height: 5%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(#3b0d14, #5a1620);
+}
+
+/* ================= PLAYER ================= */
+
+.player {
+    color: #c9a44c;
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(10px, 4vw, 14px);
+    width: clamp(200px, 4vw, 200px);
+    height: clamp(154px, 4vw, 154px);
+    position: absolute;
+    display: flex;
+    left: 1.5%;
+    bottom: 5%;
+    background: transparent;
+    border: none;
+    z-index: 9999;
+    pointer-events: none;
+    box-shadow: none;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    overflow: hidden;
+}
+
+.player img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    object-fit: contain;
+    object-position: bottom left;
+}
+
+.player.jump {
+    transform: translateY(-20px);
+}
+
+/* ================= CARD ================= */
+
+.card {
+    width: 390px;
+    color: #f5e39c;
+    background: #000;
+    padding: clamp(26px, 4vw, 26px);
+    border-radius: 16px;
+    border: 2px solid #AB936B;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: popIn 0.6s ease both;
+    transform-origin: center;
+    container-type: inline-size;
+}
+
+.mainCard {
+    padding-top: 1%;
+}
+
+/* ================= TYPOGRAPHY ================= */
+
+h1.title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8cqw;
+    margin-bottom: 14px;
+}
+
+h2.subTitle {
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(16px, 4vw, 16px);
+    margin-bottom: 14px;
+}
+
+p.default {
+    font-size: 4.5cqw;
+    line-height: 1.6;
+}
+
+p.swipeText {
+    font-size: 5.5cqw !important;
+}
+
+span.arrow {
+    font-size: clamp(24px, 4vw, 24px) !important;
+    line-height: 0px;
+    vertical-align: middle;
+    animation: blink 1s steps(1, start) infinite;
+    -webkit-animation: blink 1s steps(1, start) infinite;
+}
+
+span.detailTtext {
+    font-size: clamp(16px, 4vw, 16px);
+}
+
+.achievementText {
+    font-family: 'Press Start 2P', cursive;
+    color: #2ECC71;
+    margin-top: 25px;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes popIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@-webkit-keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ================= UI ELEMENTS ================= */
+
+.hint {
+    color: #f5e39c;
+    font-size: clamp(10px, 2.8vw, 11px);
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    background: rgba(43, 15, 20, 0.85);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #c9a44c;
+    z-index: 10;
+    transform-origin: top right;
+}
+
+.dress-colors {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.color-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: #000;
+}
+
+.qrCode {
+    margin-right: 2.5%;
+    border: 2px solid #AB936B;
+    border-radius: 16px;
+    display: none;
+}
+
+/* ================= RSVP FORM ================= */
+
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.rsvp-form input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
+.question {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    cursor: pointer;
+}
+
+.option input {
+    transform: scale(1.2);
+}
+
+.rsvp-form button {
+    padding: 12px;
+    border-radius: 999px;
+    border: none;
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#status {
+    display: none;
+    color: #00ff99;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* ================= MEDIA QUERIES ================= */
+
+@media (max-width: 768px) {
+    .player {
+        display: flex !important;
+        opacity: 1 !important;
+        transform: translateZ(0);
+    }
+}
+
+@media (orientation: portrait) {
+    .scene {
+        flex-direction: column;
+    }
+
+    .qrCode {
+        margin-right: 0%;
+        margin-bottom: 35%;
+    }
+}
+
+@media (orientation: landscape) {
+    .scene {
+        flex-direction: row;
+    }
+
+    .player img {
+        width: 70%;
+        height: 70%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1280px) and (min-device-height: 600px) and (orientation: portrait) {
+    .qrCode {
+        margin-bottom: 0%;
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1280px) and (min-device-height: 600px) and (orientation: landscape) {
+    .player img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .qrCode {
+        margin-left: 15%;
+        margin-right: -7.5%;
+    }
+}

@@ -3,308 +3,14 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>#GGWPInvitation</title>
+		<title>GGWP Invitation</title>
 		<link rel="shortcut icon" type="image/x-icon" href="./images/logo.ico">
 		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 		<style>
-			* {
-				box-sizing: border-box;
-				margin: 0;
-				padding: 0;
-			}
-
-			html,
-			body {
-				font-family: 'Montserrat', sans-serif;
-				overflow: hidden;
-				height: 100%;
-				background: linear-gradient(180deg, #000000 0%, #780606 40%, #f5e39c 120%);
-				color: #fff;
-			}
-
-			.world {
-				display: flex;
-				height: 100dvh;
-				transition: transform 0.6s cubic-bezier(.22, .61, .36, 1);
-				touch-action: pan-x;
-			}
-
-			.scene {
-				width: 100vw;
-				height: 100dvh;
-				position: relative;
-				/* padding: clamp(16px, 4vw, 40px); */
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				/* background: radial-gradient(circle at top, rgba(255, 255, 255, 0.18), rgba(0, 0, 0, 0)); */
-				container-type: inline-size;
-			}
-
-			.ground {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 101%;
-				height: 5%;
-				background: linear-gradient(#3b0d14, #5a1620);
-			}
-
-			.player {
-				position: absolute;
-				bottom: 5%;
-				left: 1.5%;
-				width: clamp(200px, 4vw, 200px);
-        		height: clamp(154px, 4vw, 154px);
-				background: transparent;
-				border: none;
-				/* border-radius: 16px; */
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				color: #c9a44c;
-				font-family: 'Press Start 2P', cursive;
-				font-size: clamp(10px, 4vw, 14px);
-				z-index: 9999;
-				pointer-events: none;
-				box-shadow: none;
-				transition: transform 0.2s ease;
-				overflow: hidden;
-			}
-
-			.player img {
-				width: 100%;
-				height: 100%;
-				object-fit: contain;
-				object-position: bottom left;
-				position: absolute;
-       			bottom: 0;
-			}
-
-			@media (max-width: 768px) {
-				.player {
-					display: flex !important;
-					opacity: 1 !important;
-					transform: translateZ(0);
-				}
-			}
-
-			.player.jump {
-				transform: translateY(-20px);
-			}
-
-			.card {
-				width: 390px;
-				background: #000;
-				padding: clamp(26px, 4vw, 26px);
-				border-radius: 16px;
-				border: 2px solid #AB936B;
-				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-				color: #f5e39c;
-				text-align: center;
-				animation: popIn 0.6s ease both;
-				transform-origin: center;
-				container-type: inline-size;
-			}
-			.mainCard {
-				padding-top: 1%;
-			}
-
-			@keyframes popIn {
-				from {
-					/* transform: scale(0.92); */
-					opacity: 0;
-				}
-
-				to {
-					/* transform: scale(1); */
-					opacity: 1;
-				}
-			}
-
-			h1.title {
-				font-family: 'Press Start 2P', cursive;
-				font-size: 8cqw;
-				margin-bottom: 14px;
-			}
-
-			.achievementText {
-				font-family: 'Press Start 2P', cursive;
-				color: #2ECC71;
-				margin-top: 25px;
-			}
-
-			h2.subTitle {
-				font-family: 'Press Start 2P', cursive;
-				font-size: clamp(16px, 4vw, 16px);
-				margin-bottom: 14px;
-			}
-
-			p.default {
-				font-size: 4.5cqw;
-				line-height: 1.6;
-			}
-			p.swipeText {
-				font-size: 5.5cqw !important;
-			}
-			span.arrow {
-				font-size: clamp(24px, 4vw, 24px) !important;
-				line-height: 0px;
-				vertical-align: middle;
-				animation: blink 1s steps(1, start) infinite;
-				-webkit-animation: blink 1s steps(1, start) infinite;
-			}
-			@keyframes blink {
-				0%, 100% { opacity: 1; }
-				50% { opacity: 0; }
-			}
-			@-webkit-keyframes blink {
-				0%, 100% { opacity: 1; }
-				50% { opacity: 0; }
-			}
-
-			span.detailTtext {
-				font-size: clamp(16px, 4vw, 16px);
-			}
-
-			.hint {
-				position: fixed;
-				top: 14px;
-				right: 14px;
-				background: rgba(43, 15, 20, 0.85);
-				color: #f5e39c;
-				padding: 8px 12px;
-				border-radius: 8px;
-				font-size: clamp(10px, 2.8vw, 11px);
-				border: 1px solid #c9a44c;
-				z-index: 10;
-				transform-origin: top right;
-			}
-
-			/* @media (max-width: 768px) {
-				.hint::after {
-					content: ' • Swipe to move';
-				}
-			} */
-
-			.dress-colors {
-				display: flex;
-				justify-content: center;
-				gap: 12px;
-				margin-top: 12px;
-			}
-
-			.color-circle {
-				width: 28px;
-				height: 28px;
-				border-radius: 50%;
-				border: 2px solid #fff;
-				background: #000;
-			}
-
-			.qrCode {
-				border: 2px solid #AB936B;
-				border-radius: 16px;
-				/* width: 25%; */
-				margin-right: 2.5%;
-				display: none;
-			}
-
-.rsvp-form {
-				display: flex;
-				flex-direction: column;
-				gap: 12px;
-				margin-top: 15px;
-			}
-
-			.rsvp-form input[type="text"] {
-				padding: 12px;
-				border-radius: 12px;
-				border: none;
-				outline: none;
-				width: 100%;
-			}
-
-			.question {
-				color: #fff;
-				margin-top: 10px;
-				font-size: 14px;
-			}
-
-			.option {
-				display: flex;
-				align-items: center;
-				gap: 10px;
-				padding: 10px;
-				border-radius: 12px;
-				background: rgba(255,255,255,0.05);
-				cursor: pointer;
-			}
-
-			.option input {
-				transform: scale(1.2);
-			}
-
-			.rsvp-form button {
-				padding: 12px;
-				border-radius: 999px;
-				border: none;
-				background: #fff;
-				color: #000;
-				font-weight: bold;
-				cursor: pointer;
-			}
-
-			#status {
-				display: none;
-				color: #00ff99;
-				font-size: 14px;
-				margin-top: 10px;
-			}
-
-			/* Portrait Mobile */
-			@media (orientation: portrait) {
-				.scene {
-					flex-direction: column;
-				}
-				.qrCode {
-					/* width: 55%; */
-					margin-bottom: 35%;
-					margin-right: 0%;
-				}
-			}
-
-			/* Landscape Mobile */
-			@media (orientation: landscape) {
-				.scene {
-					flex-direction: row;
-				}
-				.player img {
-					width: 70%;
-					height: 70%;
-				}
-			}
-
-			/* Portrait Tablet */
-			@media screen and (min-width: 600px) and (max-width: 1280px) and (min-device-height: 600px)and (orientation: portrait) {
-				.qrCode {
-					margin-bottom: 0%;
-					margin-top: 10%;
-				}
-			}
-
-			/* Landscape Tablet */
-			@media screen and (min-width: 600px) and (max-width: 1280px) and (min-device-height: 600px) and (orientation: landscape) {
-				.player img {
-					width: 100%;
-					height: 100%;
-				}
-				.qrCode {
-				    margin-left: 15%;
-					margin-right: -7.5%;
-				}
-			}
+			*{box-sizing: border-box;margin: 0;padding: 0;}
 		</style>
+		<link rel="preload" href="./style.css" as="style" onload="this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="./style.css>"></noscript>
 	</head>
 	<body>
 		<div class="player">
@@ -321,7 +27,6 @@
 					<br>
 					<p class="default swipeText"><span class="arrow" style="visibility: hidden;">←</span>  <i>Swipe to continue</i>  <span class="arrow">→</span></p>
 				</div>
-				<div class="ground"></div>
 			</div>
 			<div class="scene">
 				<div class="card">
@@ -333,7 +38,6 @@
 					<br>
 					<p class="default swipeText"><span class="arrow">←</span>  <i>Swipe to continue</i>  <span class="arrow">→</span></p>
 				</div>
-				<div class="ground"></div>
 			</div>
 			<div class="scene">
 				<div class="card withQR">
@@ -347,7 +51,6 @@
 				</div>
 				<br>
 				<!-- <img class="qrCode qrChurch" src=""></img> -->
-				<div class="ground"></div>
 			</div>
 			<div class="scene">
 				<div class="card withQR">
@@ -361,7 +64,6 @@
 				</div>
 				<br>
 				<!-- <img class="qrCode qrReception" src=""></img> -->
-				<div class="ground"></div>
 			</div>
 			<!-- <div class="scene">
 				<div class="card">
@@ -369,7 +71,6 @@
 					<h2 class=subTitle>Countdown</h2>
 					<p id="countdown"></p>
 				</div>
-				<div class="ground"></div>
 			</div> -->
 			<div class="scene">
 				<div class="card">
@@ -385,7 +86,6 @@
 					<br>
 					<p class="default swipeText"><span class="arrow">←</span>  <i>Swipe to continue</i>  <span class="arrow">→</span></p>
 				</div>
-				<div class="ground"></div>
 			</div>
 			<div class="scene">
 				<div class="card withQR">
@@ -396,7 +96,6 @@
 					<p class="default swipeText"><span class="arrow">←</span>  <i>Swipe to continue</i>  <span class="arrow">→</span></p>
 				</div>
 				<br>
-				<div class="ground"></div>
 			</div>
 			<div class="scene">
 				<div class="card">
@@ -420,10 +119,10 @@
 						<p id="status">Thank you! Your response has been recorded.</p>
 					</form>
 				</div>
-				<div class="ground"></div>
 			</div>
 			<iframe name="hidden_iframe" style="display:none;"></iframe>
 		</div>
+		<div class="ground"></div>
 		<script src="./app-data.js"></script>
 		<script>
 			let index = 0;
