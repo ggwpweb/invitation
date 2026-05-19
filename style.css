@@ -190,7 +190,7 @@ span.detailTtext {
     background: #000;
 }
 
-/* .qrCode {
+/* .qr-code {
     margin-right: 2.5%;
     border: 2px solid #AB936B;
     border-radius: 16px;
@@ -235,7 +235,7 @@ span.detailTtext {
 }
 
 .rsvp-form button, .url-btn {
-    background: #fff;
+    background: #c9a44c;
     color: #000;
     font-size: 5cqw;
     font-weight: bold;
@@ -268,7 +268,7 @@ span.detailTtext {
         flex-direction: column;
     }
 
-    /* .qrCode {
+    /* .qr-code {
         margin-right: 0%;
         margin-bottom: 35%;
     } */
@@ -286,7 +286,7 @@ span.detailTtext {
 }
 
 @media screen and (min-width: 600px) and (max-width: 1280px) and (min-device-height: 600px) and (orientation: portrait) {
-    /* .qrCode {
+    /* .qr-code {
         margin-bottom: 0%;
         margin-top: 10%;
     } */
@@ -298,7 +298,7 @@ span.detailTtext {
         height: 100%;
     }
 
-    /* .qrCode {
+    /* .qr-code {
         margin-left: 15%;
         margin-right: -7.5%;
     } */
