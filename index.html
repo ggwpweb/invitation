@@ -47,23 +47,33 @@
 						<br><i>106 Sumulong Hwy, Antipolo, 1870 Rizal</i>
 					</p>
 					<br>
+					<button class="url-btn" onclick="window.open('https://maps.app.goo.gl/PCHTq9wNrszmBYAS6', '_blank')">
+						Open Church Map
+					</button>
+					<br>
+					<br>
 					<p class="default swipeText"><span class="arrow">←</span>  <i>Swipe to continue</i>  <span class="arrow">→</span></p>
 				</div>
 				<br>
-				<!-- <img class="qrCode qrChurch" src=""></img> -->
+				<!-- <img class="qr-code qrChurch" src=""></img> -->
 			</div>
 			<div class="scene">
 				<div class="card withQR">
 					<h2 class=subTitle>RECEPTION DETAILS</h2>
 					<p class="default">
 						<span class="detailTtext"><b>Reception</b></span><br>5:00 PM | Loreland Farm Resort
-						<br><i>Loreland Road, San Roque, Antipolo, 1870 Rizal</i>
+						<br><i>Loreland Road, San Roque,<br>Antipolo, 1870 Rizal</i>
 					</p>
+					<br>
+					<button class="url-btn" onclick="window.open('https://maps.app.goo.gl/iU7xoVrC9jHdCCra7', '_blank')">
+						Open Reception Map
+					</button>
+					<br>
 					<br>
 					<p class="default swipeText"><span class="arrow">←</span>  <i>Swipe to continue</i>  <span class="arrow">→</span></p>
 				</div>
 				<br>
-				<!-- <img class="qrCode qrReception" src=""></img> -->
+				<!-- <img class="qr-code qrReception" src=""></img> -->
 			</div>
 			<!-- <div class="scene">
 				<div class="card">
@@ -90,8 +100,8 @@
 			<div class="scene">
 				<div class="card withQR">
 					<h2 class=subTitle>GIFT GUIDE</h2>
-					<p class="default">Celebrating this day with you is the greatest gift we could receive.
-						If you would like to give something as we begin our life together, a monetary gift would be truly appreciated.</p>
+					<p class="default">Celebrating this day with you is the<br>greatest gift we could receive.
+						If you would like to give something as we begin our life together, a monetary gift would<br>be truly appreciated.</p>
 					<br>
 					<p class="default swipeText"><span class="arrow">←</span>  <i>Swipe to continue</i>  <span class="arrow">→</span></p>
 				</div>
@@ -118,6 +128,8 @@
 						<button type="submit">Submit RSVP</button>
 						<p id="status">Thank you! Your response has been recorded.</p>
 					</form>
+					<br>
+					<p class="default swipeText"><span class="arrow">←</span>  <i>Swipe to continue</i>  <span class="arrow" style="visibility: hidden;">→</span></p>
 				</div>
 			</div>
 			<iframe name="hidden_iframe" style="display:none;"></iframe>
@@ -138,7 +150,7 @@
 			const maxIndex = cards.length;
 			const grounds = document.querySelectorAll('.ground');
 			const logos = document.querySelectorAll('.logo');
-			// const qrCodes = document.querySelectorAll('.qrCode');
+			// const qr-codes = document.querySelectorAll('.qr-code');
 			const church = document.querySelector('.qrChurch');
 			const reception = document.querySelector('.qrReception');
 			const playerImg = document.getElementById('imgChar');
@@ -296,9 +308,9 @@
 				withQRs.forEach(withQR => {
 					withQRsArr.push(withQR.getBoundingClientRect().height);
 				});
-				// qrCodes.forEach((qrCode, index) => {
-				// 	qrCode.style.height = withQRsArr[index] + "px";
-				// 	qrCode.style.setProperty("display", "block", "important");
+				// qr-codes.forEach((qr-code, index) => {
+				// 	qr-code.style.height = withQRsArr[index] + "px";
+				// 	qr-code.style.setProperty("display", "block", "important");
 				// });
 				console.log("----------------------" + "\nOrientation: " + orientation + "\nDevice: " + device + "\nOS: " + os + "\n----------------------");
 			}

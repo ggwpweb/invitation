@@ -190,12 +190,12 @@ span.detailTtext {
     background: #000;
 }
 
-.qrCode {
+/* .qrCode {
     margin-right: 2.5%;
     border: 2px solid #AB936B;
     border-radius: 16px;
     display: none;
-}
+} */
 
 /* ================= RSVP FORM ================= */
 
@@ -234,13 +234,15 @@ span.detailTtext {
     transform: scale(1.2);
 }
 
-.rsvp-form button {
+.rsvp-form button, .url-btn {
+    background: #fff;
+    color: #000;
+    font-size: 5cqw;
+    font-weight: bold;
+    width: 100%;
     padding: 12px;
     border-radius: 999px;
     border: none;
-    background: #fff;
-    color: #000;
-    font-weight: bold;
     cursor: pointer;
 }
 
@@ -266,10 +268,10 @@ span.detailTtext {
         flex-direction: column;
     }
 
-    .qrCode {
+    /* .qrCode {
         margin-right: 0%;
         margin-bottom: 35%;
-    }
+    } */
 }
 
 @media (orientation: landscape) {
@@ -284,10 +286,10 @@ span.detailTtext {
 }
 
 @media screen and (min-width: 600px) and (max-width: 1280px) and (min-device-height: 600px) and (orientation: portrait) {
-    .qrCode {
+    /* .qrCode {
         margin-bottom: 0%;
         margin-top: 10%;
-    }
+    } */
 }
 
 @media screen and (min-width: 600px) and (max-width: 1280px) and (min-device-height: 600px) and (orientation: landscape) {
@@ -296,8 +298,8 @@ span.detailTtext {
         height: 100%;
     }
 
-    .qrCode {
+    /* .qrCode {
         margin-left: 15%;
         margin-right: -7.5%;
-    }
+    } */
 }
