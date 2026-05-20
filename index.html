@@ -158,7 +158,7 @@
 			const countdownEl = document.getElementById('countdown');
 			const hint = document.querySelector('.hint');
 			const params = new URLSearchParams(window.location.search);
-			const indexUrl = Number(params.get("index")) || 0;
+			const indexUrl = params.get("index");
 
 			function showConfirm() {
 				setTimeout(() => {
@@ -314,12 +314,19 @@
 				// });
 				console.log("----------------------" + "\nOrientation: " + orientation + "\nDevice: " + device + "\nOS: " + os + "\n----------------------");
 			}
-			function moveWorld(moveIndex = index) {
-				world.style.transform = `translateX(-${moveIndex * 100}vw)`;
+			function moveWorld(moveIndex = null) {
+				
+				if(moveIndex == "last") {
+					moveIndex = maxIndex - 1;
+				}
+
+				let currentIndex = moveIndex;
+				
+				world.style.transform = `translateX(-${currentIndex * 100}vw)`;
 				player.classList.add('jump');
 				setTimeout(() => player.classList.remove('jump'), 200);
 
-				index = moveIndex;
+				index = currentIndex;
 			}			
 			function updateCountdown() {
 				const now = Date.now();
