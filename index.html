@@ -315,9 +315,10 @@
 				console.log("----------------------" + "\nOrientation: " + orientation + "\nDevice: " + device + "\nOS: " + os + "\n----------------------");
 			}
 			function moveWorld(moveIndex = null) {
-				console.log(moveIndex)
 				if(moveIndex == "rsvp") {
 					moveIndex = maxIndex - 1;
+				} else {
+					moveIndex = index;
 				}
 
 				let currentIndex = moveIndex;
@@ -327,6 +328,7 @@
 				setTimeout(() => player.classList.remove('jump'), 200);
 
 				index = currentIndex;
+				console.log(index)
 			}			
 			function updateCountdown() {
 				const now = Date.now();
