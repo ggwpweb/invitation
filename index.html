@@ -115,9 +115,16 @@
 						method="POST"
 						target="hidden_iframe"
 						onsubmit="showConfirm()">
-						<input id="name-input" type="text" name="name" list="guest-names" autocomplete="name" placeholder="Your Full Name" required>
+						<!-- <input id="name-input" type="text" name="name" list="guest-names" autocomplete="name" placeholder="Your Full Name" required>
 						<datalist id="guest-names"></datalist>
-						<p id="seat-display"></p>
+						<p id="seat-display"></p> -->
+<div class="search-box">
+    <input id="name-input" type="text" placeholder="Your Full Name" autocomplete="off">
+
+    <div id="dropdown-list" class="dropdown-list"></div>
+</div>
+
+<p id="seat-display"></p>
 						<div class="option-div">
 							<label class="option">
 								<input type="radio" name="attendance" autocomplete="attendance" value="Yes" required>
@@ -187,29 +194,77 @@
 				
 			}
 
+			// async function loadGuests() {
+			// 	let guests = [];
+			// 	const input = document.getElementById("name-input");
+			// 	const seatDisplay = document.getElementById("seat-display");
+			// 	const res = await fetch("./seats.json");
+			// 	guests = await res.json();
+			// 	const datalist = document.getElementById("guest-names");
+
+			// 	datalist.innerHTML = guests
+			// 		.map(g => `<option value="${g.name}">`)
+			// 		.join("");
+
+			// 	input.addEventListener("change", () => {
+			// 		const guest = guests.find(g => g.name === input.value.trim());
+
+			// 		if (guest) {
+			// 			seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
+			// 		} else {
+			// 			seatDisplay.textContent = "Name not found";
+			// 		}
+			// 	});
+			// }
+			let guests = [];
+			const input = document.getElementById("name-input");
+			const list = document.getElementById("dropdown-list");
+			const seatDisplay = document.getElementById("seat-display");
+
 			async function loadGuests() {
-				let guests = [];
-				const input = document.getElementById("name-input");
-				const seatDisplay = document.getElementById("seat-display");
 				const res = await fetch("./seats.json");
 				guests = await res.json();
-				const datalist = document.getElementById("guest-names");
-
-				datalist.innerHTML = guests
-					.map(g => `<option value="${g.name}">`)
-					.join("");
-
-				input.addEventListener("change", () => {
-					const guest = guests.find(g => g.name === input.value.trim());
-
-					if (guest) {
-						seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
-					} else {
-						seatDisplay.textContent = "Name not found";
-					}
-				});
 			}
+
+			input.addEventListener("input", () => {
+				const value = input.value.toLowerCase().trim();
+				const matches = guests.filter(g =>
+					g.name.toLowerCase().includes(value)
+				);
+
+				if (!value || matches.length === 0) {
+					list.style.display = "none";
+					list.innerHTML = "";
+					return;
+				}
+
+				list.style.display = "block";
+				list.innerHTML = matches.map(g =>
+					`<div class="item" data-name="${g.name}">
+						${g.name}
+					</div>`
+				).join("");
+
+				document.querySelectorAll(".item").forEach(item => {
+					item.onclick = () => {
+						const guest = guests.find(g => g.name === item.dataset.name);
+
+						input.value = guest.name;
+						list.style.display = "none";
+						list.innerHTML = "";
+						seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
+					};
+				});
+			});
+
+// close dropdown when clicking outside
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-box")) {
+        list.innerHTML = "";
+    }
+});
 			
+
 			world.style.width = 100 * maxIndex + "vw";
 			document.addEventListener("DOMContentLoaded", () => {
 				moveWorld(indexUrl);
