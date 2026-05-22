@@ -110,21 +110,25 @@
 			<div class="scene">
 				<div class="card">
 					<h2 class="subTitle">RSVP</h2>
-					<form
-						class="rsvp-form"
+					<form class="rsvp-form"
 						action="https://script.google.com/macros/s/AKfycbwOTRAQo1A3zEnDcIv1Swoq1B9vLTY9rm9bLP9nn8vtQ09lzzajrGBTTE4RCqrVFT2F/exec"
 						method="POST"
 						target="hidden_iframe"
 						onsubmit="showConfirm()">
-						<input type="text" name="name" autocomplete="name" placeholder="Your Full Name" required>
-						<label class="option">
-							<input type="radio" name="attendance" autocomplete="attendance" value="Yes" required>
-							<span>Yes, I will attend</span>
-						</label>
-						<label class="option">
-							<input type="radio" name="attendance" autocomplete="attendance" value="No" required>
-							<span>No, I can’t attend</span>
-						</label>
+						<input id="name-input" type="text" name="name" list="guest-names" autocomplete="name" placeholder="Your Full Name" required>
+						<datalist id="guest-names"></datalist>
+						<p id="seat-display"></p>
+						<div class="option-div">
+							<label class="option">
+								<input type="radio" name="attendance" autocomplete="attendance" value="Yes" required>
+								<span>Yes, I will attend</span>
+							</label>
+							<label class="option">
+								<input type="radio" name="attendance" autocomplete="attendance" value="No" required>
+								<span>No, I can’t attend</span>
+							</label>
+						</div>
+						<br>
 						<button type="submit">Submit RSVP</button>
 						<p id="status">Thank you! Your response has been recorded.</p>
 					</form>
@@ -182,6 +186,29 @@
 				// reception.src = receptionImg;
 				
 			}
+
+			async function loadGuests() {
+				let guests = [];
+				const input = document.getElementById("name-input");
+				const seatDisplay = document.getElementById("seat-display");
+				const res = await fetch("./seats.json");
+				guests = await res.json();
+				const datalist = document.getElementById("guest-names");
+
+				datalist.innerHTML = guests
+					.map(g => `<option value="${g.name}">`)
+					.join("");
+
+				input.addEventListener("change", () => {
+					const guest = guests.find(g => g.name === input.value.trim());
+
+					if (guest) {
+						seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
+					} else {
+						seatDisplay.textContent = "Name not found";
+					}
+				});
+			}
 			
 			world.style.width = 100 * maxIndex + "vw";
 			document.addEventListener("DOMContentLoaded", () => {
@@ -225,6 +252,7 @@
 			// updateCountdown();
 			// setInterval(updateCountdown, 60000);
 			// setTimeout(initWeb, 50);
+			loadGuests();
 			initWeb();
 			
 			function initWeb() {
@@ -238,34 +266,12 @@
 						cards.forEach(card => {
 							card.style.transform = 'scale(1.5)';
 						});
-						switch (getPlatform()) {
-							case "iOS":
-								os = "iOS";
-								break;
-							case "Android":
-								os = "Android";
-								break;
-							default:
-								os = "Desktop";
-								break;
-						}
 					} else {
 						device = "Mobile";
 						hint.style.transform = 'scale(1)';
 						cards.forEach(card => {
 							card.style.transform = 'scale(.9)';
 						});
-						switch (getPlatform()) {
-							case "iOS":
-								os = "iOS";
-								break;
-							case "Android":
-								os = "Android";
-								break;
-							default:
-								os = "Desktop";
-								break;
-						}
 					}
 				} else {
 					orientation = "Landscape";
@@ -275,33 +281,37 @@
 						cards.forEach(card => {
 							card.style.transform = 'scale(1.5)';
 						});
-						if (getPlatform() == "iOS") {
-							os = "iOS";
-						} else if (getPlatform() == "Android") {
-							os = "Android";
-						} else {
-							os = "Desktop";
-						}
 					} else {
 						device = "Mobile";
 						hint.style.transform = 'scale(1.2)';
 						cards.forEach(card => {
 							card.style.transform = 'scale(.9)';
 						});
-						// FOR TEST ENVIRONMENT
-						switch (getPlatform()) {
-							case "iOS":
-								os = "iOS";
-								break;
-							case "Android":
-								os = "Android";
-								break;
-							default:
-								os = "Desktop";
-								break;
-						}
 					}
 				}
+
+				switch (getPlatform()) {
+					case "iOS":
+						os = "iOS";
+						break;
+					case "Android":
+						os = "Android";
+						break;
+					default:
+						os = "Desktop";
+						break;
+				}
+
+				if (os == "Desktop") {
+					device = "Desktop";
+					hint.style.transform = 'scale(2)';
+					cards.forEach(card => {
+						card.style.transform = 'scale(1.1)';
+					});
+				}
+
+				document.body.setAttribute("device", device);
+				document.body.setAttribute("os", os);
 				// CUSTOM RESIZE ELEMENTS
 				
 				withQRsArr = [];
@@ -329,7 +339,7 @@
 
 				index = currentIndex;
 				console.log(index)
-			}			
+			}
 			function updateCountdown() {
 				const now = Date.now();
 				const diff = weddingDate - now;
