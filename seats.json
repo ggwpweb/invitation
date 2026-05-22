@@ -10,5 +10,17 @@
     {
         "name": "John Doe",
         "seats": 1
+    },
+    {
+        "name": "Jane Doe",
+        "seats": 4
+    },
+    {
+        "name": "Bryan Manalang",
+        "seats": 1
+    },
+    {
+        "name": "Tiffany Catbagan",
+        "seats": 1
     }
 ]
