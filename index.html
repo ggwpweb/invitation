@@ -118,13 +118,11 @@
 						<!-- <input id="name-input" type="text" name="name" list="guest-names" autocomplete="name" placeholder="Your Full Name" required>
 						<datalist id="guest-names"></datalist>
 						<p id="seat-display"></p> -->
-<div class="search-box">
-    <input id="name-input" type="text" placeholder="Your Full Name" autocomplete="off">
-
-    <div id="dropdown-list" class="dropdown-list"></div>
-</div>
-
-<p id="seat-display"></p>
+						<div class="search-box">
+							<input id="name-input" type="text" name="name" placeholder="Your Full Name" readonly>
+							<div id="dropdown-list" class="dropdown-list"></div>
+						</div>
+						<p id="seat-display"></p>
 						<div class="option-div">
 							<label class="option">
 								<input type="radio" name="attendance" autocomplete="attendance" value="Yes" required>
@@ -153,6 +151,7 @@
 			let resizeTimer;
 			let lastW = window.innerWidth;
 			let lastH = window.innerHeight;
+			let guests = [];
 			const world = document.getElementById('world');
 			const player = document.querySelector('.player');
 			const cards = document.querySelectorAll('.card');
@@ -168,8 +167,12 @@
 			const weddingDate = new Date('October 24, 2026 00:00:00').getTime();
 			const countdownEl = document.getElementById('countdown');
 			const hint = document.querySelector('.hint');
+			const input = document.getElementById("name-input");
+			const list = document.getElementById("dropdown-list");
+			const seatDisplay = document.getElementById("seat-display");
 			const params = new URLSearchParams(window.location.search);
 			const indexUrl = params.get("index");
+			const guestCode = params.get("guest");
 
 			function showConfirm() {
 				setTimeout(() => {
@@ -194,80 +197,36 @@
 				
 			}
 
-			// async function loadGuests() {
-			// 	let guests = [];
-			// 	const input = document.getElementById("name-input");
-			// 	const seatDisplay = document.getElementById("seat-display");
-			// 	const res = await fetch("./seats.json");
-			// 	guests = await res.json();
-			// 	const datalist = document.getElementById("guest-names");
-
-			// 	datalist.innerHTML = guests
-			// 		.map(g => `<option value="${g.name}">`)
-			// 		.join("");
-
-			// 	input.addEventListener("change", () => {
-			// 		const guest = guests.find(g => g.name === input.value.trim());
-
-			// 		if (guest) {
-			// 			seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
-			// 		} else {
-			// 			seatDisplay.textContent = "Name not found";
-			// 		}
-			// 	});
-			// }
-			let guests = [];
-			const input = document.getElementById("name-input");
-			const list = document.getElementById("dropdown-list");
-			const seatDisplay = document.getElementById("seat-display");
-
 			async function loadGuests() {
 				const res = await fetch("./seats.json");
 				guests = await res.json();
+
+				showSeats();
 			}
 
-			input.addEventListener("input", () => {
-				const value = input.value.toLowerCase().trim();
-				const matches = guests.filter(g =>
-					g.name.toLowerCase().includes(value)
-				);
+			function showSeats() {
+				const value = input.value.trim();
+				const guest = guests.find(g => g.nameCode === guestCode);
 
-				if (!value || matches.length === 0) {
-					list.style.display = "none";
-					list.innerHTML = "";
-					return;
+
+				if (guest) {
+					input.value = guest.name;
+					seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
 				}
+			}
 
-				list.style.display = "block";
-				list.innerHTML = matches.map(g =>
-					`<div class="item" data-name="${g.name}">
-						${g.name}
-					</div>`
-				).join("");
-
-				document.querySelectorAll(".item").forEach(item => {
-					item.onclick = () => {
-						const guest = guests.find(g => g.name === item.dataset.name);
-
-						input.value = guest.name;
-						list.style.display = "none";
-						list.innerHTML = "";
-						seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
-					};
-				});
+			document.addEventListener("click", (e) => {
+				if (!e.target.closest(".search-box")) {
+					list.innerHTML = "";
+				}
 			});
-
-// close dropdown when clicking outside
-document.addEventListener("click", (e) => {
-    if (!e.target.closest(".search-box")) {
-        list.innerHTML = "";
-    }
-});
 			
-
 			world.style.width = 100 * maxIndex + "vw";
 			document.addEventListener("DOMContentLoaded", () => {
 				moveWorld(indexUrl);
+				setImages();
+				loadGuests();
+				initWeb();
 			});
 			window.addEventListener('keydown', e => {
 				if (e.key === 'ArrowRight' && index < maxIndex - 1) index++;
@@ -302,13 +261,6 @@ document.addEventListener("click", (e) => {
 				clearTimeout(resizeTimer);
 				resizeTimer = setTimeout(initWeb, 50);
 			});
-
-			setImages();
-			// updateCountdown();
-			// setInterval(updateCountdown, 60000);
-			// setTimeout(initWeb, 50);
-			loadGuests();
-			initWeb();
 			
 			function initWeb() {
 				width = window.innerWidth;
@@ -393,7 +345,6 @@ document.addEventListener("click", (e) => {
 				setTimeout(() => player.classList.remove('jump'), 200);
 
 				index = currentIndex;
-				console.log(index)
 			}
 			function updateCountdown() {
 				const now = Date.now();
