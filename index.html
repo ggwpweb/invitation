@@ -206,6 +206,7 @@
 			}
 
 			function showSeats() {
+				const value = input.value.trim();
 				const guest = guests.find(g => g.nameCode === guestCode);
 
 				if (!guest) return;
