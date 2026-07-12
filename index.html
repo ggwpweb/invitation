@@ -209,11 +209,11 @@
 				const value = input.value.trim();
 				const guest = guests.find(g => g.nameCode === guestCode);
 
-				if (!guest) return;
 
-				input.value = guest.name;
-				seatInput.value = guest.seats;   // <-- sent to Google Apps Script
-				seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
+				if (guest) {
+					input.value = guest.name;
+					seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
+				}
 			}
 
 			document.addEventListener("click", (e) => {
