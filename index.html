@@ -122,6 +122,7 @@
 							<input id="name-input" type="text" name="name" placeholder="Your Full Name" readonly>
 							<div id="dropdown-list" class="dropdown-list"></div>
 						</div>
+						<input type="hidden" id="seat-input" name="seats">
 						<p id="seat-display"></p>
 						<div class="option-div">
 							<label class="option">
@@ -205,14 +206,13 @@
 			}
 
 			function showSeats() {
-				const value = input.value.trim();
 				const guest = guests.find(g => g.nameCode === guestCode);
 
+				if (!guest) return;
 
-				if (guest) {
-					input.value = guest.name;
-					seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
-				}
+				input.value = guest.name;
+				seatInput.value = guest.seats;   // <-- sent to Google Apps Script
+				seatDisplay.textContent = `Seats reserved: ${guest.seats}`;
 			}
 
 			document.addEventListener("click", (e) => {
