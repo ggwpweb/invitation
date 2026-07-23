@@ -141,4 +141,9 @@
   { "name": "Allen Cruz", "nameCode": "AC02", "seats": 1 },
   { "name": "Anne Bondoc", "nameCode": "AB01", "seats": 1 },
   { "name": "Kaycee Bunan-Bugarin", "nameCode": "KBB01", "seats": 1 }
+  { "name": "Jocelyn Senfelices", "nameCode": "JS03", "seats": 1 }
+  { "name": "Jose Senfelices", "nameCode": "JS04", "seats": 1 }
+  { "name": "Rezie Den Hannah Usop", "nameCode": "RDHU01", "seats": 1 }
+  { "name": "Zeke Vergara", "nameCode": "ZV01", "seats": 1 }
+  { "name": "Reyner Nick Profeta", "nameCode": "RNP01", "seats": 2 }
 ]
