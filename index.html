@@ -108,7 +108,7 @@
 				</div>
 				<br>
 			</div>
-			<div class="scene">
+			<div class="scene" id="rsvpScene">
 				<div class="card">
 					<h2 class="subTitle">RSVP</h2>
 					<form class="rsvp-form"
@@ -139,6 +139,65 @@
 						<button type="submit">Submit RSVP</button>
 						<p id="status">Thank you! Your response has been recorded.</p>
 					</form>
+					<br>
+					<p class="default swipeText"><span class="arrow">←</span>  <i>Swipe to continue</i>  <span class="arrow">→</span></p>
+				</div>
+			</div>
+			<div class="scene">
+				<div class="card timelineCard">
+					<h2 class="subTitle">WEDDING TIMELINE</h2>
+					<div class="timeline">
+						<div class="timelineItem left">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3"/><path d="M10.5 3.5h3"/><path d="M5 10L12 5l7 5v11H5V10Z"/><path d="M9 21v-5a3 3 0 0 1 6 0v5"/></svg></span>
+							<span class="timelineLabel">Guest Arrival</span>
+							<span class="timelineTime">12:45 PM</span>
+						</div>
+						<div class="timelineItem right">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7.5" r="2"/><circle cx="14" cy="6.5" r="2"/><circle cx="12" cy="10" r="2"/><circle cx="7.5" cy="10.5" r="1.6"/><circle cx="15.5" cy="10.5" r="1.6"/><path d="M12 12v8"/><path d="M9 16.5l3-2 3 2"/></svg></span>
+							<span class="timelineLabel">Processional Begins</span>
+							<span class="timelineTime">1:15 PM</span>
+						</div>
+						<div class="timelineItem left">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M9 6.5l1 2-1 2-1-2Z"/></svg></span>
+							<span class="timelineLabel">Ceremony</span>
+							<span class="timelineTime">1:30 PM</span>
+						</div>
+						<div class="timelineItem right">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.3"/></svg></span>
+							<span class="timelineLabel">Photos</span>
+							<span class="timelineTime">2:30 PM</span>
+						</div>
+						<div class="timelineItem left">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16.5l1.5-4.5A2 2 0 0 1 7.4 10.5h9.2a2 2 0 0 1 1.9 1.5l1.5 4.5"/><path d="M3 16.5h18v3H3Z"/><circle cx="7.5" cy="19.5" r="1.3"/><circle cx="16.5" cy="19.5" r="1.3"/><path d="M17 2.5a3 3 0 0 1 3 3c0 2-3 5-3 5s-3-3-3-5a3 3 0 0 1 3-3Z"/><circle cx="17" cy="5.5" r="0.9"/></svg></span>
+							<span class="timelineLabel">Travel</span>
+							<span class="timelineTime">3:00 PM</span>
+						</div>
+						<div class="timelineItem right">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14l-7 8Z"/><path d="M12 13v7"/><path d="M8 20h8"/><circle cx="9" cy="6.6" r="0.7"/></svg></span>
+							<span class="timelineLabel">Cocktail Hour</span>
+							<span class="timelineTime">4:00 PM</span>
+						</div>
+						<div class="timelineItem left">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="18" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M11.5 18V6l7-2v10"/></svg></span>
+							<span class="timelineLabel">Program</span>
+							<span class="timelineTime">5:00 PM</span>
+						</div>
+						<div class="timelineItem right">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="2.5"/><path d="M4.2 3v6M4.2 3c-1 0-1.7 1-1.7 3s.7 3 1.7 3M4.2 9v12M19.8 3c-1.2 1-1.6 2.5-1.6 4s.4 3 1.6 4M19.8 3v18"/></svg></span>
+							<span class="timelineLabel">Dinner</span>
+							<span class="timelineTime">6:00 PM</span>
+						</div>
+						<div class="timelineItem left">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1.2 8.2a1.9 1.9 0 0 1-1.8 1.6h0a1.9 1.9 0 0 1-1.8-1.6L9 3Z"/><path d="M12 12.8V20"/><path d="M8.3 20h7.4"/><circle cx="11.7" cy="6" r="0.4"/><circle cx="10.8" cy="8.3" r="0.4"/></svg></span>
+							<span class="timelineLabel">Celebration</span>
+							<span class="timelineTime">7:00 PM</span>
+						</div>
+						<div class="timelineItem right">
+							<span class="timelineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/><path d="M12 17.5s-2.6-1.7-2.6-3.5a1.7 1.7 0 0 1 3-1 1.7 1.7 0 0 1 3 1c0 1.8-2.6 3.5-2.6 3.5Z"/></svg></span>
+							<span class="timelineLabel">Home Sweet Home</span>
+							<span class="timelineTime">9:00 PM</span>
+						</div>
+					</div>
 					<br>
 					<p class="default swipeText"><span class="arrow">←</span>  <i>Swipe to continue</i>  <span class="arrow" style="visibility: hidden;">→</span></p>
 				</div>
@@ -337,7 +396,9 @@
 			}
 			function moveWorld(moveIndex = null) {
 				if(moveIndex == "rsvp") {
-					moveIndex = maxIndex - 1;
+					const scenesArr = Array.from(document.querySelectorAll('.scene'));
+					const rsvpIndex = scenesArr.findIndex(s => s.id === 'rsvpScene');
+					moveIndex = rsvpIndex !== -1 ? rsvpIndex : maxIndex - 1;
 				} else {
 					moveIndex = index;
 				}
