@@ -144,5 +144,7 @@
   { "name": "Jocelyn Senfelices", "nameCode": "JS03", "seats": 1 },
   { "name": "Jose Senfelices", "nameCode": "JS04", "seats": 1 },
   { "name": "Rodel San Pedro Pante", "nameCode": "RDHU01", "seats": 2 },
-  { "name": "Reyner Nick Profeta", "nameCode": "RNP01", "seats": 2 }
+  { "name": "Rezie Den Hannah Uso", "nameCode": "RDHU02", "seats": 2 },
+  { "name": "Mary Mischelle Caagbay", "nameCode": "MMC01", "seats": 2 },
+  { "name": "Jilyn Dela Luna", "nameCode": "JDL01", "seats": 1 }
 ]
