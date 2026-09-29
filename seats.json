@@ -153,5 +153,11 @@
   { "name": "John Clark Bungay", "nameCode": "JCB01", "seats": 1 },
   { "name": "Demosthenes Adrian Directo", "nameCode": "DAD01", "seats": 1 },
   { "name": "Anton San Jose", "nameCode": "ASJ01", "seats": 2 },
-  { "name": "Ryan Bello", "nameCode": "RB01", "seats": 1 }
+  { "name": "Ryan Bello", "nameCode": "RB01", "seats": 1 },
+  { "name": "Zorem Bendaña", "nameCode": "ZB01", "seats": 1 },
+  { "name": "Roxanne Mercado", "nameCode": "RM02", "seats": 1 },
+  { "name": "Julius Rei Zafra Morcilla", "nameCode": "JRZM01", "seats": 1 },
+  { "name": "Kirk Yebes", "nameCode": "KY01", "seats": 1 },
+  { "name": "Patrick Olivera", "nameCode": "PO01", "seats": 1 },
+  { "name": "Aldrienne Louise Alao", "nameCode": "ALA01", "seats": 1 },
 ]
