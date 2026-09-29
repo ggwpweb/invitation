@@ -150,5 +150,8 @@
   { "name": "Emil Gumban", "nameCode": "EG01", "seats": 1 },
   { "name": "Ralph Ongmanchi", "nameCode": "RO02", "seats": 1 },
   { "name": "Mr & Mrs. John Andrew and Ofelia Russell", "nameCode": "JAOR01", "seats": 2 },
-  { "name": "John Clark Bungay", "nameCode": "JCB01", "seats": 1 }
+  { "name": "John Clark Bungay", "nameCode": "JCB01", "seats": 1 },
+  { "name": "Demosthenes Adrian Directo", "nameCode": "DAD01", "seats": 1 },
+  { "name": "Anton San Jose", "nameCode": "ASJ01", "seats": 2 },
+  { "name": "Ryan Bello", "nameCode": "RB01", "seats": 1 }
 ]
