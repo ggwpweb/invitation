@@ -160,5 +160,6 @@
   { "name": "Kirk Yebes", "nameCode": "KY01", "seats": 1 },
   { "name": "Patrick Olivera", "nameCode": "PO01", "seats": 1 },
   { "name": "Aldrienne Louise Alao", "nameCode": "ALA01", "seats": 1 },
-  { "name": "Mcqualay Manuel Bautista", "nameCode": "MMB01", "seats": 1 }
+  { "name": "Mcqualay Manuel Bautista", "nameCode": "MMB01", "seats": 1 },
+  { "name": "Edison Lucmayon", "nameCode": "EL01", "seats": 1 }
 ]
